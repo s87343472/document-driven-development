@@ -106,6 +106,15 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 MIT License - see [LICENSE](LICENSE) for details.
 
+## Author
+
+Created by **Sujing Shen**
+
+- Blog: [https://www.sagasu.art/](https://www.sagasu.art/)
+- Twitter: [@sujingshen](https://x.com/sujingshen)
+
 ## Acknowledgments
 
 This skill is based on the "Document-Driven Development" methodology series. The core idea: **generation is cheap, controlled evolution is scarce**.
+
+Read the full methodology series on the [blog](https://www.sagasu.art/).
