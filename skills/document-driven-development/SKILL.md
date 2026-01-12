@@ -1,16 +1,20 @@
 ---
 name: document-driven-development
-description: |
-  Help users build products using a document-driven approach. Activate this skill when:
-  - User wants to create a new project or product
-  - User wants to add features or iterate on existing project
-  - User asks how to organize requirements for AI collaboration
-  - User mentions intent.md, spec.md, plan.md
-  - User asks about document-driven development
-  Guide users to establish a three-layer documentation system before writing code.
+description: Use document-driven development methodology. Activate when user wants to build a project, add features, or mentions intent.md/spec.md/plan.md. Guide users to create documentation before code.
 ---
 
 # Document-Driven Development Skill
+
+This skill teaches you to help users build products using a document-driven approach. **Always create or update documentation before generating code.**
+
+## Your Behavior
+
+When this skill is activated:
+
+1. **Never generate code immediately** - First understand user's intent through questions
+2. **Guide documentation creation** - Help user create intent.md → spec.md → plan.md in order
+3. **Generate code based on documents** - Reference the documents when writing code
+4. **Trace issues to documents** - When problems occur, check if documents need updating first
 
 ## Core Philosophy
 
