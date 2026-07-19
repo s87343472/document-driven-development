@@ -35,6 +35,33 @@
 
 ---
 
+## roadmap.md Template (multi-version products)
+
+```markdown
+# Roadmap
+
+## Architecture Spine
+[The invariant layers and their interfaces — what will NOT change across versions]
+
+## Versions
+
+### v0.1
+- Core goal: [one sentence]
+- In scope: [features]
+- Deferred: [explicitly pushed to later versions]
+- Validation gate: [tools: works as specified / products: retention, usage, or payment signal]
+
+### v0.2
+- Core goal: [one sentence]
+- In scope: [...]
+- Deferred: [...]
+- Validation gate: [...]
+```
+
+**Sits between** intent.md (whole project) and spec.md (one version). Update when the version path changes.
+
+---
+
 ## spec.md Template
 
 ```markdown
