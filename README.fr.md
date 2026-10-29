@@ -29,7 +29,21 @@ comprendre la personne → s'accorder sur le cœur métier → vérifier l'exist
 
 La compétence est du Markdown simple au format ouvert Agent Skills ; elle fonctionne avec n'importe quel modèle.
 
-**Claude Code**
+**Une commande, n'importe quel agent** (Claude Code, Cursor, Codex, etc. ; nécessite Node.js) :
+
+```bash
+npx skills add s87343472/document-driven-development
+```
+
+**Plugin Claude Code** (peut se mettre à jour automatiquement à chaque nouvelle version) :
+
+```text
+/plugin install document-driven-development --marketplace s87343472/document-driven-development
+```
+
+Les options ci-dessous installent à la main.
+
+**Claude Code, à la main**
 
 ```bash
 # ce projet seulement
@@ -62,6 +76,7 @@ skills/document-driven-development/
     ├── verification.md      vérifications, application des règles, revue, régression
     └── principles.md        raisonnement et anti-patterns
 scripts/check.py             auto-vérification du dépôt, aussi lancée en CI
+.claude-plugin/               entrée de la marketplace de plugins Claude Code
 ```
 
 ## Historique
@@ -69,7 +84,7 @@ scripts/check.py             auto-vérification du dépôt, aussi lancée en CI
 - **3.0 (2026-10)**
   - Ajouts : questions adaptées au profil (développeur, designer, commercial, finance, opérations, fondateur) ; recherche commune du cœur métier ; étude de l'existant avec décision utiliser / adapter / construire ; couche de vérification (vérifications exécutables, une commande, règles imposées, revue selon la spec, bugs transformés en vérifications) ; profondeur du processus selon l'enjeu.
   - Retraits, car les modèles actuels s'en chargent seuls : décrire la stack et l'arborescence dans `plan.md`, documenter un code existant avant de le modifier, les longs modèles, et la règle « jamais de code sans documents » pour les petits changements.
-  - Dépôt : uniquement des champs de frontmatter portables (l'ancien `disable-auto-invoke` n'était pas un champ valide et était ignoré), références dans leur propre dossier, fichiers obsolètes supprimés, auto-vérification et CI ajoutées.
+  - Dépôt : uniquement des champs de frontmatter portables (l'ancien `disable-auto-invoke` n'était pas un champ valide et était ignoré), références dans leur propre dossier, fichiers obsolètes supprimés, auto-vérification et CI ajoutées ; installation en une commande via `npx skills` et la marketplace de plugins Claude Code.
 - **2026-06** : roadmap.md, colonne vertébrale d'architecture, jalons de validation, documents comme runtime.
 - **2026-03** : découpage en cœur, modèles et principes pour économiser le contexte.
 - **2026-01** : première version.

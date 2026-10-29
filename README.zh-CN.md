@@ -29,7 +29,21 @@
 
 技能是纯 Markdown，遵循开放的 Agent Skills 格式，任何模型都能用。
 
-**Claude Code**
+**一条命令，任何 Agent 通用**（Claude Code、Cursor、Codex 等，需要 Node.js）：
+
+```bash
+npx skills add s87343472/document-driven-development
+```
+
+**Claude Code 插件**（发布新版本后可以自动更新）：
+
+```text
+/plugin install document-driven-development --marketplace s87343472/document-driven-development
+```
+
+下面是手动安装方式。
+
+**Claude Code 手动安装**
 
 ```bash
 # 只用于当前项目
@@ -62,6 +76,7 @@ skills/document-driven-development/
     ├── verification.md      检查、强制规则、审查、回归
     └── principles.md        背后的道理和常见反模式
 scripts/check.py             仓库自检脚本，CI 里也会跑
+.claude-plugin/               Claude Code 插件市场配置
 ```
 
 ## 更新日志
@@ -69,7 +84,7 @@ scripts/check.py             仓库自检脚本，CI 里也会跑
 - **3.0（2026-10）**
   - 新增：按人群调整提问（工程师、设计师、销售、财务、运营、创业者）；共同找出业务核心；先查现成方案并决定直接用、改造还是自建；验收层（可运行的检查、一条命令、规则强制、对照 spec 审查、bug 变检查）；流程轻重随风险调整。
   - 删除（现在的模型已经能自己做好）：在 `plan.md` 里写技术栈和目录结构、改老项目前先把现状写成文档、冗长模板，以及小改动也必须先写文档的硬规则。
-  - 仓库：只用通用 frontmatter 字段（旧的 `disable-auto-invoke` 不是有效字段，一直被忽略）；参考文件单独放进 references 文件夹；删掉过期文件；新增自检脚本和 CI。
+  - 仓库：只用通用 frontmatter 字段（旧的 `disable-auto-invoke` 不是有效字段，一直被忽略）；参考文件单独放进 references 文件夹；删掉过期文件；新增自检脚本和 CI；支持用 `npx skills` 和 Claude Code 插件市场一条命令安装。
 - **2026-06**：roadmap.md、架构主干、版本验证关卡、文档即运行时。
 - **2026-03**：拆成核心、模板、原则三份文件，节省上下文。
 - **2026-01**：首次发布。

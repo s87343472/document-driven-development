@@ -4,6 +4,7 @@
 Fails (exit 1) if the skill or the READMEs drift out of shape.
 Standard library only, so it runs anywhere.
 """
+import json
 import re
 import sys
 from pathlib import Path
@@ -18,7 +19,7 @@ PORTABLE_FIELDS = {"name", "description", "license", "compatibility", "metadata"
 SKILL_MAX_LINES = 500
 DESCRIPTION_MAX = 1024
 READMES = ["README.md", "README.zh-CN.md", "README.ja.md", "README.fr.md"]
-ROOT_ALLOWED = {".git", ".github", ".gitignore", "AGENTS.md", "LICENSE", "scripts", "skills", *READMES}
+ROOT_ALLOWED = {".git", ".github", ".claude-plugin", ".gitignore", "AGENTS.md", "LICENSE", "scripts", "skills", *READMES}
 
 errors = []
 
@@ -102,6 +103,23 @@ def check_readmes():
         fail(f"READMEs have different numbers of sections, out of sync: {counts}")
 
 
+def check_marketplace(skill_text):
+    path = ROOT / ".claude-plugin" / "marketplace.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        fail(f"marketplace.json: cannot read ({e})")
+        return
+    m = re.search(r'^  version: "([^"]+)"', skill_text, flags=re.M)
+    skill_version = m.group(1) if m else None
+    if data.get("metadata", {}).get("version") != skill_version:
+        fail(f"marketplace.json version {data.get('metadata', {}).get('version')} != SKILL.md version {skill_version}")
+    for plugin in data.get("plugins", []):
+        for s in plugin.get("skills", []):
+            if not (ROOT / s / "SKILL.md").exists():
+                fail(f"marketplace.json: plugin '{plugin.get('name')}' lists {s}, which has no SKILL.md")
+
+
 def check_root():
     for p in ROOT.iterdir():
         if p.name not in ROOT_ALLOWED:
@@ -109,7 +127,9 @@ def check_root():
 
 
 def main():
-    check_references(check_skill())
+    skill_text = check_skill()
+    check_references(skill_text)
+    check_marketplace(skill_text)
     check_links()
     check_readmes()
     check_root()
@@ -118,7 +138,7 @@ def main():
         for e in errors:
             print(f"  - {e}")
         sys.exit(1)
-    print("PASS: skill frontmatter, size, references, links, READMEs, repo root")
+    print("PASS: skill frontmatter, size, references, marketplace, links, READMEs, repo root")
 
 
 if __name__ == "__main__":

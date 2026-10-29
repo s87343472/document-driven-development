@@ -29,7 +29,21 @@
 
 スキルはプレーンなMarkdownで、オープンなAgent Skills形式に従っているため、どのモデルでも使えます。
 
-**Claude Code**
+**1コマンドで、どのエージェントでも**（Claude Code、Cursor、Codex など。Node.js が必要）：
+
+```bash
+npx skills add s87343472/document-driven-development
+```
+
+**Claude Code プラグイン**（新しいバージョンを自動で受け取れます）：
+
+```text
+/plugin install document-driven-development --marketplace s87343472/document-driven-development
+```
+
+以下は手動でのインストール方法です。
+
+**Claude Code（手動）**
 
 ```bash
 # このプロジェクトのみ
@@ -62,6 +76,7 @@ skills/document-driven-development/
     ├── verification.md      チェック、強制、レビュー、回帰
     └── principles.md        考え方とアンチパターン
 scripts/check.py             リポジトリの自己チェック、CIでも実行
+.claude-plugin/               Claude Code プラグインマーケットプレイスの設定
 ```
 
 ## 変更履歴
@@ -69,7 +84,7 @@ scripts/check.py             リポジトリの自己チェック、CIでも実�
 - **3.0（2026-10）**
   - 追加：相手に合わせたヒアリング（エンジニア、デザイナー、営業、経理、オペレーション、創業者）、ビジネスの核を一緒に見つける手順、既存解決策の調査と「使う・手を加える・作る」の判断、検証レイヤー（実行できるチェック、1コマンド、ルールの強制、specに基づくレビュー、バグのチェック化）、リスクに応じたプロセスの重さ。
   - 削除（現在のモデルが自力でできるため）：`plan.md` への技術スタックとディレクトリ構成の記述、既存コードを変更前に文書化する手順、長いテンプレート、小さな変更でも先に文書を書くという規則。
-  - リポジトリ：汎用的なfrontmatterフィールドのみ使用（旧 `disable-auto-invoke` は有効なフィールドではなく無視されていた）、参照ファイルを専用フォルダに分離、古いファイルを削除、自己チェックとCIを追加。
+  - リポジトリ：汎用的なfrontmatterフィールドのみ使用（旧 `disable-auto-invoke` は有効なフィールドではなく無視されていた）、参照ファイルを専用フォルダに分離、古いファイルを削除、自己チェックとCIを追加。`npx skills` と Claude Code プラグインマーケットプレイスで1コマンドインストールに対応。
 - **2026-06**：roadmap.md、アーキテクチャの背骨、検証ゲート、ランタイムとしてのドキュメント。
 - **2026-03**：コンテキスト効率のためコア・テンプレート・原則に分割。
 - **2026-01**：初回リリース。

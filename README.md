@@ -29,7 +29,21 @@ read the person → agree on the business core → check what exists → intent 
 
 The skill is plain Markdown and follows the open Agent Skills format, so it works with any model.
 
-**Claude Code**
+**One command, any agent** (Claude Code, Cursor, Codex and others; needs Node.js):
+
+```bash
+npx skills add s87343472/document-driven-development
+```
+
+**Claude Code plugin** (can update automatically when a new version is pushed):
+
+```text
+/plugin install document-driven-development --marketplace s87343472/document-driven-development
+```
+
+The options below install by hand.
+
+**Claude Code, by hand**
 
 ```bash
 # this project only
@@ -62,6 +76,7 @@ skills/document-driven-development/
     ├── verification.md      checks, enforcement, review, regression
     └── principles.md        reasoning and anti-patterns
 scripts/check.py             repository self-check, also run in CI
+.claude-plugin/               Claude Code plugin marketplace entry
 ```
 
 ## Changelog
@@ -69,7 +84,7 @@ scripts/check.py             repository self-check, also run in CI
 - **3.0 (2026-10)**
   - Added: adapting discovery to the person (engineer, designer, sales, finance, operations, founder); finding the business core together; prior-art check with use / adapt / build decisions; a verification layer (runnable checks, one command, enforced rules, spec-based review, bugs become checks); process depth matched to the stakes.
   - Removed, because current models handle it on their own: describing the stack and file tree in `plan.md`, documenting an existing codebase before changing it, long templates, and the "never code without documents" rule for small changes.
-  - Repo: portable frontmatter only (the old `disable-auto-invoke` field was not a real field and was ignored), references in their own folder, stale files removed, self-check and CI added.
+  - Repo: portable frontmatter only (the old `disable-auto-invoke` field was not a real field and was ignored), references in their own folder, stale files removed, self-check and CI added; one-command install via `npx skills` and the Claude Code plugin marketplace.
 - **2026-06**: roadmap.md, architecture spine, validation gates, documents as runtime.
 - **2026-03**: split into core, templates and principles for context efficiency.
 - **2026-01**: first release.

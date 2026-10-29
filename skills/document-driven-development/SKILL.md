@@ -3,7 +3,7 @@ name: document-driven-development
 description: Turn an idea into working software by first agreeing on the business core with the person, checking what already exists, writing short intent/spec/plan documents, and proving the result with runnable checks. Use when someone wants to build a new product, tool, agent or feature, wants to change what an existing one does, or mentions intent.md, spec.md, plan.md or roadmap.md. Works for technical and non-technical people. Skip for typo fixes, one-off scripts and questions.
 license: MIT
 metadata:
-  version: "3.0"
+  version: "3.0.0"
   updated: "2026-10"
 ---
 

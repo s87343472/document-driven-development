@@ -1,0 +1,22 @@
+{
+  "name": "sagasu",
+  "owner": {
+    "name": "SagaSu",
+    "url": "https://www.sagasu.art/"
+  },
+  "metadata": {
+    "description": "Skills by SagaSu",
+    "version": "3.0.0"
+  },
+  "plugins": [
+    {
+      "name": "document-driven-development",
+      "description": "Agree on the business core, check what already exists, write short intent/spec/plan documents, and prove the result with runnable checks. For technical and non-technical people.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/document-driven-development"
+      ]
+    }
+  ]
+}
